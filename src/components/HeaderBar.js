@@ -16,7 +16,7 @@ const HeaderBar = () => {
         mode='horizontal'
         header={
           {
-            text: '令牌查询',
+            text: '密钥查询',
             logo: (
               <div style={{ width: '100%', height: '100%' }}>
                 < IconTag size='large' />

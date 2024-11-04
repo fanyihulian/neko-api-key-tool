@@ -328,7 +328,7 @@ const LogsTable = () => {
                     showClear
                     value={key}
                     onChange={(value) => setKey(value)}
-                    placeholder="请输入要查询的令牌（sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx）"
+                    placeholder="请输入要查询的密钥（sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx）"
                     prefix={<IconSearch />}
                     suffix={
                         <Button
