@@ -25,7 +25,7 @@ const HeaderBar = () => {
           }
         }
         footer={
-          <Typography.Text link={{ href: 'https://github.com/Calcium-Ion/neko-api-key-tool' }}>Copyright © 2024 NewAPI. All Rights Reserved.</Typography.Text>
+          <Typography.Text link={{ href: '' }}></Typography.Text>
         }
       />
     </div>
