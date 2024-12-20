@@ -141,29 +141,7 @@ const LogsTable = () => {
             render: renderTimestamp,
             sorter: (a, b) => a.created_at - b.created_at,
         },
-        {
-            title: '令牌名称',
-            dataIndex: 'token_name',
-            render: (text, record, index) => {
-                return record.type === 0 || record.type === 2 ? (
-                    <div>
-                        <Tag
-                            color="grey"
-                            size="large"
-                            onClick={() => {
-                                copyText(text);
-                            }}
-                        >
-                            {' '}
-                            {text}{' '}
-                        </Tag>
-                    </div>
-                ) : (
-                    <></>
-                );
-            },
-            sorter: (a, b) => ('' + a.token_name).localeCompare(b.token_name),
-        },
+
         {
             title: '模型',
             dataIndex: 'model_name',
@@ -230,64 +208,7 @@ const LogsTable = () => {
             },
             sorter: (a, b) => a.quota - b.quota,
         },
-        {
-            title: '详情',
-            dataIndex: 'content',
-            render: (text, record, index) => {
-                let other = null;
-                try {
-                    if (record.other === '') {
-                        record.other = '{}';
-                    }
-                    other = JSON.parse(record.other);
-                } catch (e) {
-                    return (
-                        <Tooltip content="该版本不支持显示计算详情">
-                            <Paragraph
-                                ellipsis={{
-                                    rows: 2,
-                                }}
-                            >
-                                {text}
-                            </Paragraph>
-                        </Tooltip>
-                    );
-                }
-                if (other == null) {
-                    return (
-                        <Paragraph
-                            ellipsis={{
-                                rows: 2,
-                                showTooltip: {
-                                    type: 'popover',
-                                },
-                            }}
-                        >
-                            {text}
-                        </Paragraph>
-                    );
-                }
-                let content = renderModelPrice(
-                    record.prompt_tokens,
-                    record.completion_tokens,
-                    other.model_ratio,
-                    other.model_price,
-                    other.completion_ratio,
-                    other.group_ratio,
-                );
-                return (
-                    <Tooltip content={content}>
-                        <Paragraph
-                            ellipsis={{
-                                rows: 2,
-                            }}
-                        >
-                            {text}
-                        </Paragraph>
-                    </Tooltip>
-                );
-            },
-        }
+
     ];
 
     const copyTokenInfo = (e) => {
@@ -390,10 +311,7 @@ const LogsTable = () => {
                         itemKey="2"
                         extra={
                             <div style={{ display: 'flex', alignItems: 'center' }}>
-                                <Tag color='green' style={{ marginRight: 5 }}>计算汇率：$1 = 50 0000 tokens</Tag>
-                                <Button icon={<IconDownload />} theme='borderless' type='primary' onClick={(e) => exportCSV(e)} disabled={!tokenValid || logs.length === 0}>
-                                    导出为CSV文件
-                                </Button>
+
                             </div>
                         }
                         disabled={!tokenValid}
